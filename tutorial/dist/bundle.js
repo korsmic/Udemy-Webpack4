@@ -77,7 +77,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "dist/";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -91,9 +91,12 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hello_world__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _add_image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+
 
 
 Object(_hello_world__WEBPACK_IMPORTED_MODULE_0__["default"])();
+Object(_add_image__WEBPACK_IMPORTED_MODULE_1__["default"])();
 
 
 /***/ }),
@@ -108,6 +111,35 @@ function helloWorld() {
 
 /* harmony default export */ __webpack_exports__["default"] = (helloWorld);
 
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _toriniku_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _toriniku_jpg__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_toriniku_jpg__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function addImage() {
+  const img = document.createElement('img');
+  img.alt = 'toriniku';
+  img.width = 640;
+  img.src = _toriniku_jpg__WEBPACK_IMPORTED_MODULE_0___default.a;
+
+  const body = document.querySelector('body');
+  body.appendChild(img);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (addImage);
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "3562a8b9c29008bcc42fdadfc6b44eb6.jpg";
 
 /***/ })
 /******/ ]);
