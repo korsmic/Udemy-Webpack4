@@ -1,12 +1,16 @@
+$green : green;
+$red : red;
+$fz : 20px;
+
 .hello-world-button {
-  font-size: 20px;
+  font-size: $fz;
   padding: 7px;
-  background: green;
+  background: $green;
   color: white;
   outline: none;
 }
 
 .hello-world-text {
-  color: green;
+  color: $red;
   font-weight: bold;
 }
