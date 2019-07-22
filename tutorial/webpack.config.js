@@ -5,6 +5,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // webpack distの中身削除プラグイン
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// html用プラグイン
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -12,9 +14,10 @@ module.exports = {
     filename: 'bundle.[contenthash].js',
     path: path.resolve(__dirname, './dist'),
     // 相対パスの場合
-    publicPath: 'dist/'
+    // publicPath: 'dist/'
     // 絶対パスの場合
-    // publicPath: 'https://jws.work/assets/img/toriniku.jpg'
+    // publicPath: 'https://jws.work/assets/img/toriniku.jpg',
+    publicPath: ''
   },
   mode: 'none',
   module: {
@@ -59,6 +62,7 @@ module.exports = {
         '**/*',
         path.join(process.cwd(), 'build/**/*')
       ]
-    })
+    }),
+    new HtmlWebpackPlugin()
   ]
 };
