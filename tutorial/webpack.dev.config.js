@@ -1,8 +1,4 @@
 const path = require('path');
-// JS圧縮プラグイン
-const TerserPlugin = require('terser-webpack-plugin');
-// CSS別出しプラグイン
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // webpack distの中身削除プラグイン
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // html用プラグイン
@@ -11,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'bundle.[contenthash].js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, './dist'),
     // 相対パスの場合
     // publicPath: 'dist/'
@@ -19,7 +15,7 @@ module.exports = {
     // publicPath: 'https://jws.work/assets/img/toriniku.jpg',
     publicPath: ''
   },
-  mode: 'none',
+  mode: 'development',
   module: {
     rules: [
       {
@@ -31,12 +27,12 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader, 'css-loader'
+          'style-loader', 'css-loader'
         ]
       }, {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+          'style-loader', 'css-loader', 'sass-loader'
         ]
       },
       {
@@ -59,10 +55,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new TerserPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css'
-    }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [
         '**/*',
