@@ -27,7 +27,7 @@ module.exports = {
     splitChunks: {
       chunks: "all",
       // minSize: 10000,
-      automaticNameDelimiter: '_'
+      // automaticNameDelimiter: '_'
     }
   },
   module: {
