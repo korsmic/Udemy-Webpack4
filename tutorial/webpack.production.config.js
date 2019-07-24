@@ -9,9 +9,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    'hello-world': './src/hello-world.js',
+    'toriniku': './src/toriniku.js'
+  },
   output: {
-    filename: 'bundle.[contenthash].js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, './dist'),
     // 相対パスの場合
     // publicPath: 'dist/'
@@ -61,7 +64,7 @@ module.exports = {
   plugins: [
     // new TerserPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css'
+      filename: '[name].[contenthash].css'
     }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [
@@ -70,13 +73,22 @@ module.exports = {
       ]
     }),
     new HtmlWebpackPlugin({
+      filename: 'hello-world.html',
+      chunks: ['hello-world'],
       title: 'Hello world',
-      template: 'src/index.hbs',
+      template: 'src/page-template.hbs',
       description: 'some-description'
       // filename: 'subfolder/custom_filename.html',
       // meta: {
       //   viewport: 'width=device-width, initial-scale=1.0'
       // }
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'toriniku.html',
+      chunks: ['toriniku'],
+      title: 'toriniku',
+      template: 'src/page-template.hbs',
+      description: 'some-description'
     })
   ]
 };
