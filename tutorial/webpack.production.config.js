@@ -23,6 +23,13 @@ module.exports = {
     publicPath: ''
   },
   mode: 'production',
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      // minSize: 10000,
+      automaticNameDelimiter: '_'
+    }
+  },
   module: {
     rules: [
       {
@@ -74,7 +81,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: 'hello-world.html',
-      chunks: ['hello-world'],
+      chunks: ['hello-world','vendors~hello-world~toriniku'],
       title: 'Hello world',
       template: 'src/page-template.hbs',
       description: 'some-description'
@@ -85,7 +92,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: 'toriniku.html',
-      chunks: ['toriniku'],
+      chunks: ['toriniku','vendors~hello-world~toriniku'],
       title: 'toriniku',
       template: 'src/page-template.hbs',
       description: 'some-description'
